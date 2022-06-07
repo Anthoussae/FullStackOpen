@@ -1,0 +1,9 @@
+title title 0.6: Single-Page App: User input
+
+note left of Browser: User inputs text and clicks 'save'.
+Browser -> Server: Line 43 of browserside Javascript places a POST request to https://studies.cs.helsinki.fi/exampleapp/new_note_spa.
+note left of Browser: this 'note' contains the timestamp and the note's text, in JSON format.
+Server -> Browser: 201 Status (created) returned.
+note right of Server: There is no redirect or further HTTP requests.
+note left of Browser: The browserside JavaScript updates the page using the data.json data it requested upon page load and the new user entry.
+

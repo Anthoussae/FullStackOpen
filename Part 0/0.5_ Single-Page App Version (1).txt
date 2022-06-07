@@ -1,0 +1,15 @@
+title title 0.5: Single-Page App Version
+
+
+Browser->Server: Browser places GET request to https://studies.cs.helsinki.fi/exampleapp/spa
+Server->Browser: Server returns status code 200 & provides the content of the above link.
+Note left of Browser: HTML executes
+Browser->Server: Browser places GET request to https://studies.cs.helsinki.fi/exampleapp/main.css
+Browser->Server: Browser places GET requse to https://studies.cs.helsinki.fi/exampleapp/spa.js
+Browser -> Server: Browser places GET request to https://studies.cs.helsinki.fi/favicon.ico for favicon.ico.
+Server->Browser: Server returns status code 200 and provides the contents of the above three links.
+Note left of Browser: CSS styles applied, favicon loaded, JavaScript executes.
+Browser->Server: Line 31 of browserside Javascript places a GET request for notes database, data.json at https://studies.cs.helsinki.fi/exampleapp/data.json
+Server->Browser: Server returns data.json.
+Note left of Browser: page updates as per browserside JavaScript.
+
