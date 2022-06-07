@@ -1,0 +1,19 @@
+title Notes Submission on the Helsinki Sample Webpage
+
+note left of Browser: User inputs text and clicks "save", initiating a Form Submit Event.
+
+Browser->Server: HTTP POST request to server address new_note
+
+Server->Browser: HTTP status code 302 (Found)
+
+Browser -> Server: HTTP GET request to address notes
+
+note Left of Browser: Browser reloads notes page.
+
+Browser -> Server: Three HTTP Requests, fetching main.css, main.js, and data.json
+
+note Right of Server: serverside code creates a new note from the user input and adds it to an array.
+
+Server -> Browser: Server returns data as the body of a POST request.
+
+note Left of Browser: Browser displays notes, updated with user contribution.
