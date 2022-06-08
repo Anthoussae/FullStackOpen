@@ -2,7 +2,6 @@
 
 INSTRUCTIONS (Copypasted from course site):
 
-Unfortunately, the entire application is in the same component. 
 Refactor the code so that it consists of three new components: 
 Header, Content, and Total. 
 All data still resides in the App component, 
@@ -11,7 +10,12 @@ Header takes care of rendering the name of the course,
  Content renders the parts and their number of exercises and Total 
  renders the total number of exercises.
 
- adjusting comment line 14 for git testing purposes.
+ adjusting comment line 14 for git testing purposes. 
+ 
+ ( -- updating Git protocol in Terminal --)
+    a) git add .
+    b) git commit -m "message about commitment"
+    c) git push
 
 The App component's body will approximately be as follows:
 
@@ -29,6 +33,7 @@ const App = () => {
 
 */
 
+
 const App = () => {
   const course = 'Half Stack application development'
   const part1 = 'Fundamentals of React'
@@ -38,19 +43,32 @@ const App = () => {
   const part3 = 'State of a component'
   const exercises3 = 14
 
-  return (
+const Header = () => {
+    return (
+      <p>{course}</p>
+    )
+  }
+const Content = () => {
+    return (
+      <div>
+        <p>{part1} {exercises1}</p>
+        <p>{part2} {exercises2}</p>
+        <p>{part3} {exercises3}</p>
+      </div>
+    )
+  }
+
+const Total = () => {
+    return (
+    <p name='Total'>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+    )
+  }
+
+return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Header></Header>
+      <Content></Content>
+      <Total></Total>
     </div>
   )
 }
