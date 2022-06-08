@@ -11,6 +11,7 @@ Header takes care of rendering the name of the course,
  Content renders the parts and their number of exercises and Total 
  renders the total number of exercises.
 
+ adjusting comment line 14 for git testing purposes.
 
 The App component's body will approximately be as follows:
 
