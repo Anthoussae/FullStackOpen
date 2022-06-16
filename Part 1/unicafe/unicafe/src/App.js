@@ -18,27 +18,37 @@ const Header = (props) => (
 )
 
 const StatisticsLine = (props) => (
-  <div className='Display'>{props.text} {props.value}</div>
+
+  <tr className='Display'>
+    <td>
+    {props.text} 
+    </td>
+    <td>
+    {props.value}
+    </td>
+  </tr>
 )
 
 const Statistics = (props) => {
 return (
   
   <div>
-
     <div className='Header'>
       <p> 
         {props.topLabel}
       </p>
     </div>
     <div>
-      <StatisticsLine text='good' value={props.goodValue}></StatisticsLine>
-      <StatisticsLine text='neutral' value={props.neutralValue}></StatisticsLine>
-      <StatisticsLine text='good' value={props.badValue}></StatisticsLine>
-      <StatisticsLine text='average' value={props.averageValue}></StatisticsLine>
-      <StatisticsLine text='positive' value={props.positiveValue}></StatisticsLine>
+      <table>
+        <tbody>
+        <StatisticsLine text='good' value={props.goodValue}></StatisticsLine>
+        <StatisticsLine text='neutral' value={props.neutralValue}></StatisticsLine>
+        <StatisticsLine text='good' value={props.badValue}></StatisticsLine>
+        <StatisticsLine text='average' value={props.averageValue}></StatisticsLine>
+        <StatisticsLine text='positive' value={props.positiveValue}></StatisticsLine>
+        </tbody>
+       </table>
     </div>
-    
  </div>
 )
   }
