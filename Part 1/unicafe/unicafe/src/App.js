@@ -1,4 +1,4 @@
-//ex 1.9
+//ex 1.10
 
 import { useState } from 'react'
 import './index.css';
@@ -17,28 +17,31 @@ const Header = (props) => (
  </div>
 )
 
-const Statistics = (props) => (
+const StatisticsLine = (props) => (
+  <div className='Display'>{props.text} {props.value}</div>
+)
+
+const Statistics = (props) => {
+return (
   
   <div>
-<div className='Header'>
-  <p> 
-     {props.topLabel}
-  </p>
+
+    <div className='Header'>
+      <p> 
+        {props.topLabel}
+      </p>
+    </div>
+    <div>
+      <StatisticsLine text='good' value={props.goodValue}></StatisticsLine>
+      <StatisticsLine text='neutral' value={props.neutralValue}></StatisticsLine>
+      <StatisticsLine text='good' value={props.badValue}></StatisticsLine>
+      <StatisticsLine text='average' value={props.averageValue}></StatisticsLine>
+      <StatisticsLine text='positive' value={props.positiveValue}></StatisticsLine>
+    </div>
+    
  </div>
-   <div className='Display'>{props.firstSubLabel} {props.firstValue}</div>
-   <div className='Display'>{props.secondSubLabel} {props.secondValue}</div>
-   <div className='Display'>{props.thirdSubLabel} {props.thirdValue}</div>
-   <div className='Display'>{props.fourthSubLabel} {props.fourthValue}</div>
-   <div className='Header'>
-  <p> 
-     {props.bottomLabel}
-  </p>
- </div>
-   <div className='Display'>{props.fifthSubLabel} {props.fifthValue}</div>
-   <div className='Display'>{props.sixthSubLabel} {props.sixthValue}</div>
- </div>
-  
 )
+  }
 
 const App = () => {
 
@@ -51,7 +54,6 @@ const App = () => {
   const [interacted, setInteracted] = useState(false)
 
   const goodReport = () => {
-    console.log('good', good);
     setGood(good+1);
     setAll(all+1);
     setAverage(
@@ -64,7 +66,6 @@ const App = () => {
    }
    
   const neutralReport = () => {
-     console.log('neutral', neutral);
      setNeutral(neutral+1);
      setAll(all+1);
      setAverage(
@@ -77,7 +78,6 @@ const App = () => {
    }  
    
   const badReport = () => {
-     console.log('bad', bad);
      setBad(bad+1);
      setAll(all+1);
      setAverage(
@@ -98,28 +98,14 @@ if (interacted){
       <Button buttonName='good' handleClick={goodReport} id='goodButton'></Button>
       <Button buttonName='neutral' handleClick={neutralReport} id='neutralButton'></Button>
       <Button buttonName='bad' handleClick={badReport} id='badButton'></Button>
-    
-      <Statistics topLabel='Basic Statistics' 
-
-        firstSubLabel='good'
-        secondSubLabel='neutral'
-        thirdSubLabel='bad'
-        fourthSubLabel='all'
-        firstValue={good}
-        secondValue={neutral}
-        thirdValue={bad}
-        fourthValue={all}
-
-        bottomLabel='Advanced Statistics'
-
-        fifthSubLabel='average' 
-        sixthSubLabel='positive' 
-        fifthValue={average} 
-        sixthValue={positive}
-
-        >
-
-      </Statistics>
+      <Statistics 
+        topLabel='Statistics'
+        goodValue={good}
+        neutralValue={neutral}
+        badValue={bad}
+        averageValue={average}
+        positiveValue={positive}
+      ></Statistics>
 
     </div>
   )
