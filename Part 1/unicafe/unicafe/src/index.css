@@ -13,7 +13,7 @@ code {
 }
 
 button {
-  font-size: 12px;
+  font-size: 16px;
   margin-left: 5%;
 }
 
@@ -26,4 +26,16 @@ button {
 
 .Display {
   margin-left: 5%;
+}
+
+#goodButton {
+  background-color: lightgreen;
+}
+
+#neutralButton {
+  background-color: lightskyblue
+}
+
+#badButton {
+  background-color: pink
 }
