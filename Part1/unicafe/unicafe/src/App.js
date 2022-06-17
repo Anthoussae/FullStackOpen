@@ -27,6 +27,7 @@ const StatisticsLine = (props) => (
     {props.value}
     </td>
   </tr>
+  
 )
 
 const Statistics = (props) => {
