@@ -1,4 +1,4 @@
-//1.13
+//1.14
 
 import { render } from '@testing-library/react'
 import React from 'react'
@@ -13,6 +13,12 @@ const Button = (props) => (
 const Display = (props) => (
   <div>
    {props.displayContent}
+  </div>
+)
+
+const Header = (props) => (
+  <div>
+    <h1>{props.text}</h1>
   </div>
 )
 
@@ -56,35 +62,57 @@ const App = () => {
     const votesCopy = [...votes];
     votesCopy[selected] +=   1;
     setVotes(votesCopy);
+    findMostVoted();
+  }
+
+  function findMostVoted() {
+    let currentMostVoted = 0;
+    let currentIndex = selected;
+    const votesCopy = [...votes];
+    votesCopy.forEach((e,i)=>{
+      if (e>currentMostVoted){
+        currentMostVoted = e;
+        currentIndex = i;
+      }
+    })
+    console.log(currentIndex);
+    setMostVoted(currentIndex);
   }
   
   //states
   const [votes, setVotes] = useState(votesArray)
   const [selected, setSelected] = useState(getRandomInt(0,(anecdotes.length-1)))
   const [interacted, setInteracted] = useState(false)
-
+  const [mostVoted, setMostVoted] = useState(selected);
+  
 
   if (interacted){
     return (
       <div>
+        <Header text="Anecdote of the day"></Header>
         <Display displayContent={anecdotes[selected]}></Display>
         <Display displayContent={"has " + votes[selected] + " votes"}></Display>
         <Display displayContent={"total votes: " + sum(votes)}></Display>
         <p></p>
         <Button name='Random anecdote' onclick={anecdoteButtonClick}></Button>
         <Button name='Vote' onclick={voteButtonClick}></Button>
+        <Header text="Most popular anecdote"></Header>
+        <Display displayContent={anecdotes[mostVoted]}></Display>
       </div>
     )
   }
   else {
     return (
       <div>
+        <Header text="Anecdote of the day"></Header>
         <Display displayContent={anecdotes[selected]}></Display>
         <Display displayContent={"has " + votes[selected] + " votes"}></Display>
         <Display displayContent={"Please submit a vote or reroll the anecdote."}></Display>
         <p></p>
         <Button name='Random anecdote' onclick={anecdoteButtonClick}></Button>
         <Button name='Vote' onclick={voteButtonClick}></Button>
+        <Header text="Most popular anecdote"></Header>
+        <Display displayContent={anecdotes[selected]}></Display>
       </div>
     )
   }
